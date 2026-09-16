@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class GuiaLabirinto : MonoBehaviour
 {
-    public GameObject paredePrefab; // O espaço para receber o seu molde
+    public GameObject paredePrefab; 
     public float tamanhoBloco = 4f;
     public float alturaParede = 0f;
 
@@ -18,14 +18,13 @@ public class GuiaLabirinto : MonoBehaviour
 
     void Start()
     {
-        // Constrói as paredes físicas ao apertar Play
+        // Constrói as paredes
         for (int x = 0; x < mapa.GetLength(0); x++)
         {
             for (int y = 0; y < mapa.GetLength(1); y++)
             {
                 if (mapa[x, y] == 1)
                 {
-                    // A altura (eixo Y) está como 2f, ajuste se sua parede ficar voando ou afundada
                     Vector3 posicao = new Vector3(x * tamanhoBloco, alturaParede, y * tamanhoBloco);
                     Instantiate(paredePrefab, posicao, Quaternion.identity);
                 }
@@ -35,7 +34,7 @@ public class GuiaLabirinto : MonoBehaviour
 
     void OnDrawGizmos()
     {
-        // Mantém as linhas amarelas na cena para referência visual
+       
         for (int x = 0; x < mapa.GetLength(0); x++)
         {
             for (int y = 0; y < mapa.GetLength(1); y++)
